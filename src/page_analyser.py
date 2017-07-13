@@ -35,7 +35,6 @@ class Page:
 
         return words
 
-
     def analyse(self):
         '''Displays analysis on the given page
 
@@ -54,6 +53,23 @@ class Page:
         Other:
             1. List of links that appear on the page, including link text and target
         '''
+
+        print('Title: ', self.get_title())
+
+        print('Meta tags: ')
+        for tag in self.get_meta_tags():
+            print(tag)
+
+        print('Page file size: ', self.get_file_size())
+
+        print('Word count: ', self.get_word_count())
+
+        print('Most common 5 words: ', self.get_most_common_words())
+
+        print('Meta keywords that do not appear in content', self.get_meta_keywords_not_in_content())
+
+        print('List of links', self.get_links())
+
 
     def get_title(self):
         '''Get the page title
