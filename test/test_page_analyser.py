@@ -57,3 +57,18 @@ class TestPage(unittest.TestCase):
         </body>''')
 
         self.assertEqual(page.get_most_common_words(), ['one', 'two', 'three', 'four', 'five'])
+
+    def test_get_meta_keywords_not_in_content(self):
+        page = Page('''
+            <head>
+                <title>super duper title</title>
+            </head>
+            <body>
+            <h1>super duper pizza</h1>
+            <h2>the most super duper pizza</h2>
+            </body>
+            <meta name='keywords' content='super,sausages,pizza,horsemeat,octopus'>
+        </html>
+        ''')
+
+        self.assertCountEqual(page.get_meta_keywords_not_in_content(), ['horsemeat', 'octopus', 'sausages'])

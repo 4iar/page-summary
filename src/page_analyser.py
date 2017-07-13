@@ -126,6 +126,10 @@ class Page:
         :return list of str: Meta keywords that do not appear in the content
         '''
 
+        meta_keywords = self.soup.find('meta', {'name': 'keywords'})['content'].split(',')
+
+        return [meta_keyword for meta_keyword in meta_keywords if meta_keyword not in self.visible_words]
+
     def get_links(self):
         '''Get links that appear on the page
 
