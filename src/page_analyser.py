@@ -1,3 +1,4 @@
+import humanize
 from bs4 import BeautifulSoup
 
 
@@ -46,10 +47,16 @@ class Page:
     def get_file_size(self):
         '''Get the page file size
 
-        Get the page file size in human readable form (e.g. 23K)
+        Get the page file size in human readable form (e.g. 23 kB)
 
         :return str: The file size in human readable form
         '''
+
+        # ASCII characters use one byte each
+        size_bytes = len(self.body.encode("utf-8"))
+
+        return humanize.naturalsize(size_bytes)
+
 
     def get_word_count(self):
         '''Get the word count

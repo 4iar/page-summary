@@ -29,6 +29,9 @@ class TestPage(unittest.TestCase):
 
         self.assertEqual(self.page.get_meta_tags(), expected_tags)
 
+    def test_get_file_size(self):
+        page = Page('1234')
+        self.assertEqual('4 Bytes', page.get_file_size())
 
-
-
+        page = Page('1' * 323841)
+        self.assertEqual('323.8 kB', page.get_file_size())
