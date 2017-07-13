@@ -98,6 +98,15 @@ class Page:
 
         :return int: The number of unique words
         '''
+
+        unique_words = []
+        for word in self.visible_words:
+            if word not in unique_words:
+                unique_words.append(word)
+
+        return len(unique_words)
+
+
     def get_most_common_words(self, n=5):
         '''Get the top n most common words
 

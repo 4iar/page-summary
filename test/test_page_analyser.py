@@ -45,3 +45,6 @@ class TestPage(unittest.TestCase):
 
     def test_get_word_count(self):
         self.assertEqual(self.page.get_word_count(), 18)
+
+    def test_get_number_of_unique_words(self):
+        self.assertEqual(self.page.get_number_of_unique_words(), 12)
