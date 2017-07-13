@@ -32,6 +32,10 @@ class Page:
         :return str: The page title
         '''
 
+        return self.soup.title.string
+
+
+
     def get_meta_tags(self, body):
         '''Get the meta tags
 
