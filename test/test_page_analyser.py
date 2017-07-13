@@ -18,7 +18,7 @@ class TestPage(unittest.TestCase):
 
     def test_get_title(self):
         expected_title = 'super duper title'
-        actual_title = self.page.get_title(self.body)
+        actual_title = self.page.get_title()
         self.assertEquals(expected_title, actual_title)
 
     def test_get_meta_tags(self):

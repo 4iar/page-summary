@@ -25,10 +25,9 @@ class Page:
             1. List of links that appear on the page, including link text and target
         '''
 
-    def get_title(self, body):
+    def get_title(self):
         '''Get the page title
 
-        :param str body: The body of the page
         :return str: The page title
         '''
 
@@ -37,7 +36,6 @@ class Page:
     def get_meta_tags(self):
         '''Get the meta tags
 
-        :param str body: The body of the page
         :return list of str: Meta tags
         '''
 
@@ -45,47 +43,38 @@ class Page:
 
         return [{'name': tag.get('name'), 'content': tag.get('content')} for tag in meta_tags]
 
-
-
-
-    def get_file_size(self, body):
+    def get_file_size(self):
         '''Get the page file size
 
         Get the page file size in human readable form (e.g. 23K)
 
-        :param str body: The body of the page
         :return str: The file size in human readable form
         '''
 
-    def get_word_count(self, body):
+    def get_word_count(self):
         '''Get the word count
 
-        :param str body: The body of the page
         :return int: The number of words
         '''
 
-    def get_number_of_unique_words(self, body):
+    def get_number_of_unique_words(self):
         '''Get the number of unique words
 
-        :param str body: The body of the page
         :return int: The number of unique words
         '''
-    def get_most_common_words(self, body, n=5):
+    def get_most_common_words(self, n=5):
         '''Get the top n most common words
 
-        :param str body: The body of the page
         :param list of str: The most common words (descending)
         '''
-    def get_meta_keywords_not_in_content(self, body):
+    def get_meta_keywords_not_in_content(self):
         '''Get a list of meta keywords that do not appear in the content
 
-        :param body:
         :return list of str: Meta keywords that do not appear in the content
         '''
 
-    def get_links(self, body):
+    def get_links(self):
         '''Get links that appear on the page
 
-        :param body:
         :return list of tuple (string, string): Links and their targets
         '''
