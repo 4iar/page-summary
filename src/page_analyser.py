@@ -29,7 +29,8 @@ class Page:
         words = []
         for sentence in sentences:
             for word in sentence:
-                words.append(word)
+                if word:
+                    words.append(word.strip())
 
         return words
 
