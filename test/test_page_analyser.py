@@ -72,3 +72,6 @@ class TestPage(unittest.TestCase):
         ''')
 
         self.assertCountEqual(page.get_meta_keywords_not_in_content(), ['horsemeat', 'octopus', 'sausages'])
+
+    def test_get_links(self):
+        pass

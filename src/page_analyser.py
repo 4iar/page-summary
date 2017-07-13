@@ -149,5 +149,10 @@ class Page:
     def get_links(self):
         '''Get links that appear on the page
 
-        :return list of tuple (string, string): Links and their targets
+        :return list of dict: Links and their targets
         '''
+
+        links = self.soup.find_all('a')
+
+        return [{'text': link.text, 'target': link['href']} for link in links]
+
