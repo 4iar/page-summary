@@ -34,14 +34,20 @@ class Page:
 
         return self.soup.title.string
 
-
-
-    def get_meta_tags(self, body):
+    def get_meta_tags(self):
         '''Get the meta tags
 
         :param str body: The body of the page
         :return list of str: Meta tags
         '''
+
+        meta_tags = self.soup.find_all('meta')
+
+        return [{'name': tag.get('name'), 'content': tag.get('content')} for tag in meta_tags]
+
+
+
+
     def get_file_size(self, body):
         '''Get the page file size
 
