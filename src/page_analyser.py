@@ -1,6 +1,10 @@
+from bs4 import BeautifulSoup
+
+
 class Page:
     def __init__(self, body):
         self.body = body
+        self.soup = BeautifulSoup(body, 'html.parser')
 
     def analyse(self):
         '''Displays analysis on the given page
