@@ -5,10 +5,17 @@ class TestPage(unittest.TestCase):
 
     def setUp(self):
         self.body = '''
+        <!-- no peeping please -->
         <html>
             <head>
                 <title>super duper title</title>
             </head>
+            <body>
+            <h1>super duper pizzas</h1>
+            <h2>the most super duper pizzas</h2>
+            <a href='https://www.google.co.uk/search?q=super+duper+pizza'>find us on google</a>
+            <a href='https://www.dominos.co.uk/'>or betray us</a>
+            </body>
             <meta name='keywords' content='sausages, pizza'>
             <meta name='description' content='super duper pizza'>
         </html>
@@ -35,3 +42,6 @@ class TestPage(unittest.TestCase):
 
         page = Page('1' * 323841)
         self.assertEqual('323.8 kB', page.get_file_size())
+
+    def test_get_word_count(self):
+        self.assertEqual(self.page.get_word_count(), 18)

@@ -1,11 +1,38 @@
 import humanize
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
 
 class Page:
     def __init__(self, body):
         self.body = body
         self.soup = BeautifulSoup(body, 'html.parser')
+        self.visible_words = self._get_visible_words()
+
+    def _get_visible_words(self):
+        '''Gets words that are visible (i.e. page content)
+
+        :return:
+        '''
+
+        def valid(element):
+            if isinstance(element, Comment):
+                return False
+            elif element.parent.name in ['style', 'script', 'head']:
+                return False
+            elif element.strip() == '':  # if just a formatting character e.g. \n
+                return False
+
+            return True
+
+        sentences = [element.split(' ') for element in filter(valid, self.soup.findAll(text=True))]
+
+        words = []
+        for sentence in sentences:
+            for word in sentence:
+                words.append(word)
+
+        return words
+
 
     def analyse(self):
         '''Displays analysis on the given page
@@ -63,6 +90,8 @@ class Page:
 
         :return int: The number of words
         '''
+
+        return len(self.visible_words)
 
     def get_number_of_unique_words(self):
         '''Get the number of unique words
