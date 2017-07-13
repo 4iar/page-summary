@@ -48,3 +48,12 @@ class TestPage(unittest.TestCase):
 
     def test_get_number_of_unique_words(self):
         self.assertEqual(self.page.get_number_of_unique_words(), 12)
+
+    def test_get_most_common_words(self):
+        page = Page('''
+        <body>
+        one one one one one one one two two two two two three three three three four four four five five
+        some other words that should not count
+        </body>''')
+
+        self.assertEqual(page.get_most_common_words(), ['one', 'two', 'three', 'four', 'five'])

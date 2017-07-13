@@ -1,5 +1,6 @@
-import humanize
 from bs4 import BeautifulSoup, Comment
+from collections import Counter
+import humanize
 
 
 class Page:
@@ -113,6 +114,12 @@ class Page:
 
         :param list of str: The most common words (descending)
         '''
+
+        word_counts = Counter(self.visible_words)
+        sorted_by_count = sorted(word_counts, key=word_counts.__getitem__)[::-1]
+
+        return sorted_by_count[0:n]
+
     def get_meta_keywords_not_in_content(self):
         '''Get a list of meta keywords that do not appear in the content
 
